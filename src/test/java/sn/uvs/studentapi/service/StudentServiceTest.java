@@ -43,7 +43,7 @@ class StudentServiceTest {
         Optional<Student> result = service.findById(1L);
 
         assertTrue(result.isPresent());
-        assertEquals("Awa", result.get().getPrenom());
+        assertEquals("Omar", result.get().getPrenom());
     }
 
     @Test
