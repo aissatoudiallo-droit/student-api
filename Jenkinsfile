@@ -11,10 +11,17 @@ pipeline {
                 echo "Build #${env.BUILD_NUMBER} | Branche : ${env.BRANCH_NAME}"
             }
         }
-        stage('Build') {
-            steps {
-                bat 'mvn clean package -DskipTests'
-            }
+       stage('Build') {
+    steps {
+        bat 'mvn clean package -DskipTests'
+    }
+}
+
+stage('Lint') {
+    steps {
+        bat 'mvn checkstyle:check'
+    }
+}
         }
         stage('Tests Unitaires') {
             steps {
