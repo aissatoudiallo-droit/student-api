@@ -14,29 +14,29 @@ import jakarta.persistence.Table;
 public final class Student {
 
     /**
-     * Identifiant étudiant.
+     * Identifiant.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Nom étudiant.
+     * Nom.
      */
     private String nom;
 
     /**
-     * Prénom étudiant.
+     * Prénom.
      */
     private String prenom;
 
     /**
-     * Email étudiant.
+     * Email.
      */
     private String email;
 
     /**
-     * Moyenne étudiant.
+     * Moyenne.
      */
     private Double moyenne;
 
@@ -47,27 +47,26 @@ public final class Student {
     }
 
     /**
-     * Constructeur avec paramètres.
+     * Constructeur.
      *
-     * @param nom nom étudiant
-     * @param prenom prénom étudiant
-     * @param email email étudiant
-     * @param moyenne moyenne étudiant
+     * @param newNom nom
+     * @param newPrenom prénom
+     * @param newEmail email
+     * @param newMoyenne moyenne
      */
     public Student(
-            final String nom,
-            final String prenom,
-            final String email,
-            final Double moyenne) {
+            final String newNom,
+            final String newPrenom,
+            final String newEmail,
+            final Double newMoyenne) {
 
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.moyenne = moyenne;
+        this.nom = newNom;
+        this.prenom = newPrenom;
+        this.email = newEmail;
+        this.moyenne = newMoyenne;
     }
 
     /**
-     * Retourne l'identifiant.
      * @return id
      */
     public Long getId() {
@@ -75,15 +74,13 @@ public final class Student {
     }
 
     /**
-     * Définit l'identifiant.
-     * @param newId identifiant
+     * @param newId id
      */
     public void setId(final Long newId) {
         this.id = newId;
     }
 
     /**
-     * Retourne le nom.
      * @return nom
      */
     public String getNom() {
@@ -91,7 +88,6 @@ public final class Student {
     }
 
     /**
-     * Définit le nom.
      * @param newNom nom
      */
     public void setNom(final String newNom) {
@@ -99,7 +95,6 @@ public final class Student {
     }
 
     /**
-     * Retourne le prénom.
      * @return prénom
      */
     public String getPrenom() {
@@ -107,7 +102,6 @@ public final class Student {
     }
 
     /**
-     * Définit le prénom.
      * @param newPrenom prénom
      */
     public void setPrenom(final String newPrenom) {
@@ -115,7 +109,6 @@ public final class Student {
     }
 
     /**
-     * Retourne l'email.
      * @return email
      */
     public String getEmail() {
@@ -123,7 +116,6 @@ public final class Student {
     }
 
     /**
-     * Définit l'email.
      * @param newEmail email
      */
     public void setEmail(final String newEmail) {
@@ -131,7 +123,6 @@ public final class Student {
     }
 
     /**
-     * Retourne la moyenne.
      * @return moyenne
      */
     public Double getMoyenne() {
@@ -139,7 +130,6 @@ public final class Student {
     }
 
     /**
-     * Définit la moyenne.
      * @param newMoyenne moyenne
      */
     public void setMoyenne(final Double newMoyenne) {
