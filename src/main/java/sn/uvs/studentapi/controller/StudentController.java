@@ -3,7 +3,13 @@ package sn.uvs.studentapi.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import sn.uvs.studentapi.model.Student;
 import sn.uvs.studentapi.service.StudentService;
@@ -46,7 +52,9 @@ public final class StudentController {
      * @return étudiant
      */
     @GetMapping("/{id}")
-    public Optional<Student> getById(final Long id) {
+    public Optional<Student> getById(
+            @PathVariable final Long id) {
+
         return studentService.findById(id);
     }
 
@@ -57,7 +65,9 @@ public final class StudentController {
      * @return étudiant créé
      */
     @PostMapping
-    public Student create(final Student student) {
+    public Student create(
+            @RequestBody final Student student) {
+
         return studentService.save(student);
     }
 
@@ -67,7 +77,9 @@ public final class StudentController {
      * @param id identifiant
      */
     @DeleteMapping("/{id}")
-    public void delete(final Long id) {
+    public void delete(
+            @PathVariable final Long id) {
+
         studentService.deleteById(id);
     }
 }
