@@ -11,6 +11,7 @@ import sn.uvs.studentapi.model.Student;
  */
 public interface StudentRepository
         extends JpaRepository<Student, Long> {
+
     /**
      * Recherche par email.
      *
