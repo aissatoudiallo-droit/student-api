@@ -1,48 +1,73 @@
 package sn.uvs.studentapi.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.*;
+
 import sn.uvs.studentapi.model.Student;
 import sn.uvs.studentapi.service.StudentService;
 
-import java.util.List;
-
+/**
+ * Contrôleur REST des étudiants.
+ */
 @RestController
-@RequestMapping("/api/students")
-public class StudentController {
+@RequestMapping("/students")
+public final class StudentController {
 
-    private final StudentService service;
+    /**
+     * Service étudiant.
+     */
+    private final StudentService studentService;
 
-    public StudentController(StudentService service) {
-        this.service = service;
+    /**
+     * Constructeur.
+     *
+     * @param newService service étudiant
+     */
+    public StudentController(final StudentService newService) {
+        this.studentService = newService;
     }
 
+    /**
+     * Retourne tous les étudiants.
+     *
+     * @return liste étudiants
+     */
     @GetMapping
     public List<Student> getAll() {
-        return service.findAll();
+        return studentService.findAll();
     }
 
+    /**
+     * Retourne étudiant par id.
+     *
+     * @param id identifiant
+     * @return étudiant
+     */
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getById(@PathVariable Long id) {
-        return service.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public Optional<Student> getById(final Long id) {
+        return studentService.findById(id);
     }
 
+    /**
+     * Crée étudiant.
+     *
+     * @param student étudiant
+     * @return étudiant créé
+     */
     @PostMapping
-    public Student create(@RequestBody Student student) {
-        return service.save(student);
+    public Student create(final Student student) {
+        return studentService.save(student);
     }
 
+    /**
+     * Supprime étudiant.
+     *
+     * @param id identifiant
+     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.deleteById(id);
-        return ResponseEntity.noContent().build();
+    public void delete(final Long id) {
+        studentService.deleteById(id);
     }
 }
