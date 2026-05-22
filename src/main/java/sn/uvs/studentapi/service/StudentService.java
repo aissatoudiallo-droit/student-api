@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import sn.uvs.studentapi.model.Student;
 import sn.uvs.studentapi.repository.StudentRepository;
-import sn.uvs.studentapi.model.Student;
 
 /**
  * Service étudiant.
@@ -21,7 +20,9 @@ public final class StudentService {
     private final StudentRepository repository;
 
     /**
-     * Constructeur.
+     * Constructeur du service.
+     *
+     * @param newRepository repository étudiant
      */
     public StudentService(final StudentRepository newRepository) {
         this.repository = newRepository;
@@ -29,27 +30,37 @@ public final class StudentService {
 
     /**
      * Retourne tous les étudiants.
+     *
+     * @return liste des étudiants
      */
     public List<Student> findAll() {
         return repository.findAll();
     }
 
     /**
-     * Retourne un étudiant.
+     * Recherche un étudiant par identifiant.
+     *
+     * @param id identifiant étudiant
+     * @return étudiant trouvé
      */
     public Optional<Student> findById(final Long id) {
         return repository.findById(id);
     }
 
     /**
-     * Sauvegarde étudiant.
+     * Enregistre un étudiant.
+     *
+     * @param student étudiant
+     * @return étudiant enregistré
      */
     public Student save(final Student student) {
         return repository.save(student);
     }
 
     /**
-     * Supprime étudiant.
+     * Supprime un étudiant.
+     *
+     * @param id identifiant étudiant
      */
     public void deleteById(final Long id) {
         repository.deleteById(id);
