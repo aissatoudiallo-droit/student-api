@@ -11,13 +11,12 @@ import sn.uvs.studentapi.model.Student;
  */
 public interface StudentRepository
         extends JpaRepository<Student, Long> {
-
     /**
-     * Recherche un étudiant par email.
+     * Recherche par email.
      *
      * @param email email étudiant
      * @return étudiant trouvé
      */
-    Optional<Student> findByEmail(final String email);
+    Optional<Student> findByEmail(String email);
 
 }
