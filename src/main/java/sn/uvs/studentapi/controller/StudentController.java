@@ -18,8 +18,8 @@ import sn.uvs.studentapi.service.StudentService;
  * Contrôleur REST des étudiants.
  */
 @RestController
-@RequestMapping("/students")
-public final class StudentController {
+@RequestMapping("/api/students")
+public class StudentController {
 
     /**
      * Service étudiant.
