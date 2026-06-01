@@ -1,4 +1,5 @@
 package sn.uvs.studentapi.controller;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,11 +53,13 @@ public class StudentController {
      * @return étudiant
      */
     @GetMapping("/{id}")
-    public Optional<Student> getById(
-            @PathVariable final Long id) {
+public ResponseEntity<Student> getById(
+        @PathVariable final Long id) {
 
-        return studentService.findById(id);
-    }
+    return studentService.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+}
 
     /**
      * Crée étudiant.
