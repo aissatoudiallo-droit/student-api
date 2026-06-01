@@ -7,7 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Application principale.
  */
 @SpringBootApplication
-public class StudentApiApplication {
+public final class StudentApiApplication {
+
+    /**
+     * Constructeur privé.
+     */
+    private StudentApiApplication() {
+    }
 
     /**
      * Point d'entrée.
