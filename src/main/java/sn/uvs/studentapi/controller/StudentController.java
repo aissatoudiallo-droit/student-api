@@ -80,9 +80,10 @@ public ResponseEntity<Student> getById(
      * @param id identifiant
      */
     @DeleteMapping("/{id}")
-    public void delete(
-            @PathVariable final Long id) {
+public ResponseEntity<Void> delete(
+        @PathVariable final Long id) {
 
-        studentService.deleteById(id);
-    }
+    studentService.deleteById(id);
+    return ResponseEntity.noContent().build();
+}
 }
