@@ -2,7 +2,7 @@ package sn.uvs.studentapi.controller;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +52,7 @@ public class StudentController {
      * @param id identifiant
      * @return étudiant
      */
-    @GetMapping("/{id}")
+   @GetMapping("/{id}")
 public ResponseEntity<Student> getById(
         @PathVariable final Long id) {
 
@@ -74,12 +74,13 @@ public ResponseEntity<Student> getById(
         return studentService.save(student);
     }
 
-    /**
-     * Supprime étudiant.
-     *
-     * @param id identifiant
-     */
-    @DeleteMapping("/{id}")
+   /**
+ * Supprime étudiant.
+ *
+ * @param id identifiant
+ * @return réponse HTTP 204 No Content
+ */
+   @DeleteMapping("/{id}")
 public ResponseEntity<Void> delete(
         @PathVariable final Long id) {
 
